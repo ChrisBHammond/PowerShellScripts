@@ -16,7 +16,7 @@ Function PrintToLogFile()
 #Log File Location
 $LogFile = "c:\scripts\WebSiteStatusLog.txt"
 
-
+#Run this forever testing the 
 While($true)
 {
     # Wrap in Try block because if the URL cant be resolved it throws an error.
@@ -31,14 +31,21 @@ While($true)
     }
     Catch
     {
+        #Print out the error code to help trouble shoot the problem
         Write-Output "Ran into an issue: $($PSItem.ToString())"
+
+        # Close the HTTP connection incase its not.
         $HTTP_Response.Close()
+
+        #Exit the powershell script.
         Exit
     }
     Finally
     {
         # We then get the HTTP code as an integer.
         $HTTP_Status_Code = [int]$HTTP_Response.StatusCode
+
+        # Get Status code as String.
         $HTTP_Status = $HTTP_Response.StatusCode
 
 
@@ -53,6 +60,9 @@ While($true)
         }
         Else {
             Write-Host "The Site may be down, please check!"
+
+            #TODO send email if the website is down?
+            # Maybe even tie into API service to send SMS text message?
         }
 
         # Finally, we clean up the http request by closing it.
