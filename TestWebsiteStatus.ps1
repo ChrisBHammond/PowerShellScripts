@@ -1,8 +1,8 @@
 ﻿#Borrowed some code from this stack over flow page
 #https://stackoverflow.com/questions/20259251/powershell-script-to-check-the-status-of-a-url
 
-# Got asked this question in a interview to decided to see how hard it would be to write a small script to see if the 
-# Webserver was responding to more than just pings, This test if it returns the HTTP status code 200 OK.
+# Thissubject came up in a interview I went too, decided to see how hard it would be to write a small script to see if the 
+# webserver was responding to more than just pings. This tests if it returns the HTTP status code 200 OK.
 
 #Print to log file and outputs to host if being run manually.
 Function PrintToLogFile()
@@ -16,7 +16,7 @@ Function PrintToLogFile()
 #Log File Location
 $LogFile = "c:\scripts\WebSiteStatusLog.txt"
 
-#Run this forever testing the 
+#Run this forever testing the website
 While($true)
 {
     # Wrap in Try block because if the URL cant be resolved it throws an error.
