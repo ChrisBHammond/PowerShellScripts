@@ -40,8 +40,7 @@ While($true)
         #Exit the powershell script.
         Exit
     }
-    Finally
-    {
+   
         # We then get the HTTP code as an integer.
         $HTTP_Status_Code = [int]$HTTP_Response.StatusCode
 
@@ -67,7 +66,7 @@ While($true)
 
         # Finally, we clean up the http request by closing it.
         $HTTP_Response.Close()
-    }
+    
 
-    Start-Sleep -s 10
+    Start-Sleep -s 2
 }
