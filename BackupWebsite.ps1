@@ -35,8 +35,7 @@ else
 
 #Remove all backup files older than 30 days
 #$limit = (Get-Date).AddSeconds(-30) <--- 30 seconds old for testing.
-$limit = (Get-Date).AddSeconds(-30) 
-#$limit = (Get-Date).AddDays(-30)
+$limit = (Get-Date).AddDays(-30)
 
 
 # Delete files older than the $limit.
