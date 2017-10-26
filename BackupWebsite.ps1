@@ -29,16 +29,16 @@ else
     #This line could also be used to uncompress a file
     #expand-archive -path 'c:\projects\WebsiteBackups\NameOfFile.zip' -destinationpath '.\unzipped'
 
+    #Remove all backup files older than 30 days
+    #$limit = (Get-Date).AddSeconds(-30) <--- 30 seconds old for testing.
+    $limit = (Get-Date).AddDays(-30)
+
+
+    # Delete files older than the $limit.
+    Get-ChildItem -Path $DestinationLocation -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
 
 
 }
 
-#Remove all backup files older than 30 days
-#$limit = (Get-Date).AddSeconds(-30) <--- 30 seconds old for testing.
-$limit = (Get-Date).AddDays(-30)
-
-
-# Delete files older than the $limit.
-Get-ChildItem -Path $DestinationLocation -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
 
 
